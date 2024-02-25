@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GET IMAGE AS BASE64 URL WITHOUT CANVAS</title>
+    </head>
+    <body>
+        <script>
+            function getimgBase64(url,callback){
+                var xhr=new XMLHttpRequest();
+                xhr.onload=function(){
+                    var reader=new FileReader();
+                    reader.onloadend=function(){
+                        callback(reader.result);
+                    }
+                    reader.readAsDataURL(xhr.response);
+                };
+                xhr.open('GET',url);
+                xhr.responseType='blob';
+                xhr.send();
+            }
+            getimgBase64('https://uatncap.nextcapital.co.th/NMNY_WithholdingTax/DOC-00000001/Other/INV41007641.png', function(dataUrl){
+                console.log('RESULT:',dataUrl);
+            });
+        </script>
+    </body>
+</html>

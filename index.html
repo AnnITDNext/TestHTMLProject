@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Rotate Image</title>
+  </head>
+  <body>
+    <div>
+      <!-- Assign "rotateImage()" to "onclick" attribute -->
+     
+
+      <!-- The image element to be rotated -->
+      <img id="rotated" src="INV4100081.png" width="65%" height="100%"/>
+      <br>
+      <br>
+      <br>
+      <button name="RotateButton" onclick="rotateImage()">Rotate image</button>
+    </div>
+
+    <script>
+
+        const rotated = document.getElementById('rotated');
+
+        // Variable to hold the current angle of rotation
+        let rotation = 0;
+
+        // How much to rotate the image at a time
+        const angle = 90;
+
+        function rotateImage() {
+        // Ensure angle range of 0 to 359 with "%" operator,
+        // e.g., 450 -> 90, 360 -> 0, 540 -> 180, etc.
+                rotation = (rotation + angle) % 360;
+
+                rotated.style.transform = `Rotate(${rotation}deg)`;
+                }
+    </script>
+  </body>
+</html>
